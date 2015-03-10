@@ -10,6 +10,7 @@ enyo.kind({
 	//* @protected
 	kind: "enyo.ToolDecorator",
 	tag: "button",
+
 	attributes: {
 		// set to button, as default is "submit" which can cause unexpected
 		// problems when controls are used inside a form
