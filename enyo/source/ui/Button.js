@@ -20,7 +20,7 @@ enyo.kind({
 	published: {
 		//* When true, button is shown as disabled and does not generate tap
 		//* events
-		disabled: false
+		disabled: true
 	},
 	//* @protected
 	create: enyo.inherit(function (sup) {
