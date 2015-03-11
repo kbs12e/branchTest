@@ -14,7 +14,9 @@ enyo.kind({
 	attributes: {
 		// set to button, as default is "submit" which can cause unexpected
 		// problems when controls are used inside a form
-		type: "button"
+		type: "button",
+
+		value : ""
 	},
 	//* @public
 	published: {
@@ -29,7 +31,7 @@ enyo.kind({
 			this.disabledChanged();
 		};
 	}),
-	rendered: enyo.inherit(function (sup) {
+	valueChanged: enyo.inherit(function (sup) {
 		return function() {
 			sup.apply(this, arguments);
 			//this.disabledChanged();
@@ -39,6 +41,15 @@ enyo.kind({
 		this.setAttribute("disabled", this.disabled);
 	},
 	tap: function() {
+		if (this.disabled) {
+			// work around for platforms like Chrome on Android or Opera that send
+			// mouseup to disabled form controls
+			return true;
+		} else {
+			this.setActive(true);
+		}
+	},
+	ondown: function() {
 		if (this.disabled) {
 			// work around for platforms like Chrome on Android or Opera that send
 			// mouseup to disabled form controls
