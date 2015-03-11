@@ -6,7 +6,7 @@
 	[Buttons](building-apps/controls/buttons.html) in the Enyo Developer Guide.
 */
 enyo.kind({
-	name: "enyo.Button",
+	name: "sun.Button",
 	//* @protected
 	kind: "enyo.ToolDecorator",
 	tag: "button",
@@ -27,6 +27,12 @@ enyo.kind({
 		return function() {
 			sup.apply(this, arguments);
 			this.disabledChanged();
+		};
+	}),
+	rendered: enyo.inherit(function (sup) {
+		return function() {
+			sup.apply(this, arguments);
+			//this.disabledChanged();
 		};
 	}),
 	disabledChanged: function() {
